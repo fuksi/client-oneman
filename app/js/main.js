@@ -7,6 +7,7 @@ require('angular-ui-router');
 require('angular-moment');
 require('angular-loading-bar');
 require('./templates');
+require('./components/_index');
 require('./controllers/_index');
 require('./services/_index');
 require('./directives/_index');
@@ -21,7 +22,7 @@ angular.element(document).ready(function() {
     'templates',
     'app.controllers',
     'app.services',
-    'app.directives'
+    'app.directives',
   ];
 
   // mount on window for testing
