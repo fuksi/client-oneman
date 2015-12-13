@@ -54,9 +54,11 @@ function StudentCtrl($scope, $http, AppSettings, SearchService) {
     // Init with 125352 by default
     createAttendanceChartByStudent(102007);
     // Watch select input to change chart as student change
-    $scope.$watch("selectedStudent", function(newVal) {
-        $scope.selectedStudentName = angular.element(angular.element("#selectStudent option:selected")[0]).text().split(" ").slice(1).join(" ");
-        createAttendanceChartByStudent(newVal);
+    $scope.$watch("selectedStudent", function(newVal, oldValue) {
+        if (oldValue !== undefined) { // At page init this event will also be triggered
+            $scope.selectedStudentName = angular.element(angular.element("#selectStudent option:selected")[0]).text().split(" ").slice(1).join(" ");
+            createAttendanceChartByStudent(newVal);
+        }
     });
 
 
