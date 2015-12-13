@@ -15,6 +15,7 @@ function Routes($stateProvider, $locationProvider, $urlRouterProvider, $httpProv
   })
   .state('Teacher', {
     url: '/teacher',
+    controller: 'TeacherCtrl as teacher',
     templateUrl: 'teacher.html',
     title: 'Teacher'
   });

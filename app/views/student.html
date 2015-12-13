@@ -1,7 +1,7 @@
 <div ng-include src="'header.html'"></div>
 <div class="container">
     <div class="row student-chart-container">
-        <h2>Attendance rate for {{selectedStudentName}}</h2>
+        <h2>Attendance vs Grade</h2>
         <select name="selectStudent" id="selectStudent" ng-model="selectedStudent">
             <option ng-repeat="student in student.allStudents" value="{{student.student_id}}">{{student.student_id}}  {{student.first_name}} {{student.last_name}} </option>
         </select>
