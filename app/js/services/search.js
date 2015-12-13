@@ -9,13 +9,36 @@ function SearchService($q, $http, AppSettings) {
 
   var service = {};
 
-  service.getStatuses = function(term) {
-    var deferred = $q.defer();
+  function pathConstructor(type, paramsArray) {
+    var result = type;
+    paramsArray.forEach(function(el) { 
+      result = result + "/" +  el; 
+    });
 
-    $http.jsonp(AppSettings.apiUrl+'search.json?callback=JSON_CALLBACK', {
-      params: {q: term}
+    return result;
+  }
+
+  service.simpleQuery = function(type, paramsArray) {
+    var deferred = $q.defer();
+    var path = pathConstructor(type, paramsArray);
+
+    $http.jsonp(AppSettings.apiUrl + "simple/" + path + '?callback=JSON_CALLBACK', {
     }).success(function(data) {
-        deferred.resolve(data.statuses);
+        deferred.resolve(data);
+    }).error(function(err, status) {
+        deferred.reject(err, status);
+    });
+
+    return deferred.promise;
+  };
+
+  service.adhocQuery = function(type, paramsArray) {
+    var deferred = $q.defer();
+    var path = pathConstructor(type, paramsArray);
+
+    $http.jsonp(AppSettings.apiUrl + "adhoc/" + path + '?callback=JSON_CALLBACK', {
+    }).success(function(data) {
+        deferred.resolve(data);
     }).error(function(err, status) {
         deferred.reject(err, status);
     });
@@ -24,6 +47,8 @@ function SearchService($q, $http, AppSettings) {
   };
 
   return service;
+
+
 
 }
 

@@ -9,14 +9,14 @@ function Routes($stateProvider, $locationProvider, $urlRouterProvider, $httpProv
   $stateProvider
   .state('Home', {
     url: '/',
-    controller: 'SearchCtrl as search',
-    templateUrl: 'search.html',
-    title: 'search'
+    controller: 'StudentCtrl as student',
+    templateUrl: 'student.html',
+    title: 'Student'
   })
-  .state('About', {
-    url: '/about',
-    templateUrl: 'about.html',
-    title: 'About Loklak Twitter Evaluation'
+  .state('Teacher', {
+    url: '/teacher',
+    templateUrl: 'teacher.html',
+    title: 'Teacher'
   });
 
   $urlRouterProvider.otherwise('/');

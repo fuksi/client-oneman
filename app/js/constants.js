@@ -1,8 +1,7 @@
 'use strict';
-require('dotenv').config({path: '.env'});
 
 var AppSettings = {
-  apiUrl: process.env.apiUrl
+  apiUrl: "http://dev.com:8080/"
 };
 
 module.exports = AppSettings;
