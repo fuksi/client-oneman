@@ -48,15 +48,15 @@ function TeacherCtrl($scope, $http, AppSettings, SearchService, ChartService) {
 						secondDataSource.push(el.count);
 					});
 					// Get grade for all students
-					SearchService.adhocQuery("withCondition", ["singleCourseGradeAllStudents", course_id])
-					.then(function(grades) {
+					SearchService.adhocQuery("withCondition", ["singleCourseAttendanceAllStudents", course_id])
+					.then(function(attendance) {
 						// Constructing thirdDataSource
 						var thirdDataSource = [];
-						grades.forEach(function(el) {
-							thirdDataSource.push(el.grade);
+						attendance.forEach(function(el) {
+							thirdDataSource.push(el.count);
 						});
 						// We got all the data needed, let's construct the chart
-						ChartService.populateAttendanceChart('.teacher-chart-container', 5000, labels, firstDataSource, thirdDataSource, secondDataSource);
+						ChartService.populateAttendanceChart('.teacher-chart-container', 5000, labels, thirdDataSource, firstDataSource, secondDataSource);
 					}, function() {});
 				}, function() {});
 			}, function() {});
