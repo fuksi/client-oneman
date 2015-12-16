@@ -1,7 +1,8 @@
 'use strict';
+var configs = require('./../../custom_config');
 
 var AppSettings = {
-  apiUrl: "http://dev.com:8080/"
+  apiUrl: configs.apiUrl
 };
 
 module.exports = AppSettings;
